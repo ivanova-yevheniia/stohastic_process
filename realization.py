@@ -17,7 +17,7 @@ data = {3:  [0.834,	0.000,	-0.603,	-0.021,	0.526,	1.160,	1.370,	0.599,	0.904,	 0
 }
 t = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10']
 
-rez_numb = 30
+rez_numb = 12
 
 plt.title("Realization " + str(rez_numb))
 plt.xlabel(r'$t$')
