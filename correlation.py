@@ -1,3 +1,4 @@
+import numpy as np
 data = [[ 0.834,  0.000,	-0.603,	-0.021,	 0.526,	 1.160,	1.370,	 0.599,	 0.904,	 0.712],
         [-0.609, -0.297,	-0.565,	-0.403,	 0.208,	 0.972,	0.777,	 0.476,	 0.465,	-0.361],
         [ 0.081, -0.178,	-0.788,	-0.477,	 0.471,	-0.354,	1.410,	 0.006,	 0.315,	 0.658],
@@ -10,3 +11,43 @@ data = [[ 0.834,  0.000,	-0.603,	-0.021,	 0.526,	 1.160,	1.370,	 0.599,	 0.904,	
         [ 0.274,  1.190,	-0.841,	 0.416,	 0.482,	-0.092,	1.480,	-0.013,	-0.061,	-0.290],
         [-0.505, -0.520,	-0.620,	 0.043,	 0.561,	 1.220,	0.700,	 1.020,	 0.201,	-0.136],
         [-0.992, -1.150,	-0.326,	-0.008,	 0.248,	 0.221,	0.708,	 0.675,	-0.112,	 0.927]]
+
+# Mx
+def expected_value(t: int):
+    sum = 0
+    for i in range(len(data)):
+        sum += data[i][t]
+    val = sum / 12
+    return val
+
+# R(ti, tj)
+def corr_koef(i: int, j: int):
+    sum = 0
+    m = expected_value(i)*expected_value(j)
+    for n in range(12):
+        sum += data[n][i]*data[n][j] - m
+    return sum/11
+
+#побудова матриці кореляції
+#def corr_matrix():
+#    for i in ragnge(10)
+
+# Dx
+def dispersion(x: int):
+    m = expected_value(x)
+    sum = 0
+    for n in range(12):
+        sum += np.square(data[n][x])-np.square(m)
+    dis = sum / 11
+    return dis
+
+def corr_norm(corr_koef: float, dxi: float, dxj: float):
+    return corr_koef/np.sqrt(dxi*dxj)
+
+
+print(corr_koef(0, 0))
+print(dispersion(0))
+print(corr_norm(corr_koef(0, 0), dispersion(0), dispersion(0)))
+
+#test for t=10
+#print((0.712-0.361+0.658+0.626-0.297+0.559-0.427-0.459+0.317-0.290-0.136+0.927)/12)
