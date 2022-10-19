@@ -30,7 +30,7 @@ def expected_value():
         return ex_val
 
 ex_val = expected_value()
-print(ex_val)
+#print(ex_val)
 def dispersion():
         sum = 0
         dis = []
@@ -42,6 +42,7 @@ def dispersion():
             dis.append(val)
         return dis
 
+#print(dispersion())
 
 def standard_deviation(dispr):
         return np.sqrt(dispr)
@@ -63,19 +64,19 @@ ax.grid(which='minor',
         color = 'k',
         linewidth = 0.2)
 
-plt.plot(t, data[3], label=r'$x3(t)$')
-plt.plot(t, data[7], label=r'$x7(t)$')
-plt.plot(t, data[12], label=r'$x12(t)$')
-plt.plot(t, data[27], label=r'$x27(t)$')
-plt.plot(t, data[34], label=r'$x34(t)$')
-plt.plot(t, data[37], label=r'$x37(t)$')
-plt.plot(t, data[48], label=r'$x48(t)$')
-plt.plot(t, data[54], label=r'$x54(t)$')
-plt.plot(t, data[67], label=r'$x67(t)$')
-plt.plot(t, data[71], label=r'$x71(t)$')
-plt.plot(t, data[85], label=r'$x85(t)$')
-plt.plot(t, data[93], label=r'$x93(t)$')
-#plt.plot(t, ex_val, color = 'red', label=r'$m_x$')
-#plt.plot(t, std_dev, color = 'blue', label=r'$sigma$')
+plt.plot(t, data[3], color = '0', label=r'$x3(t)$')
+plt.plot(t, data[7], color = '0.1', label=r'$x7(t)$')
+plt.plot(t, data[12], color = '0.15', label=r'$x12(t)$')
+plt.plot(t, data[27], color = '0.2', label=r'$x27(t)$')
+plt.plot(t, data[34], color = '0.25', label=r'$x34(t)$')
+plt.plot(t, data[37], color = '0.3', label=r'$x37(t)$')
+plt.plot(t, data[48], color = '0.35', label=r'$x48(t)$')
+plt.plot(t, data[54], color = '0.4', label=r'$x54(t)$')
+plt.plot(t, data[67], color = '0.45', label=r'$x67(t)$')
+plt.plot(t, data[71], color = '0.5', label=r'$x71(t)$')
+plt.plot(t, data[85], color = '0.55', label=r'$x85(t)$')
+plt.plot(t, data[93], color = '0.6', label=r'$x93(t)$')
+plt.plot(t, ex_val, color = 'red', label=r'$m_x$')
+plt.plot(t, std_dev, color = 'blue', label=r'$sigma_x$')
 plt.legend(loc='center left', bbox_to_anchor= (1, 0.5), fancybox=True, shadow=True)
 plt.show()
