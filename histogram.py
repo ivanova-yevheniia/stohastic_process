@@ -15,11 +15,11 @@ data = {1:  [0.834,-0.609, 0.081, 0.330, -0.554, 0.670, 0.093, -0.746, 0.232, 0.
 
 t = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10']
 
-rez_numb = 1
+rez_numb = 10
 
 x_max = max(data[rez_numb])
 x_min = min(data[rez_numb])
-n = 10
+n = 12
 
 def len_of_interval():
         h = (x_max - x_min)/(np.log10(n)*3.32 + 1)
@@ -31,9 +31,9 @@ def num_of_interval():
         num = (x_max - x_min)/h
         if num.is_integer():
                 return num
-        return int(num) + 2
+        return int(num) + 1
 
-interval_numb = num_of_interval()
+interval_numb = num_of_interval() + 1
 
 
 def create_bins():
@@ -43,8 +43,8 @@ def create_bins():
 
 x = sorted(data[rez_numb])
 
-print(h, interval_numb)
-print(x)
+print(h, num_of_interval())
+
 b = create_bins()
 
 fig, ax = plt.subplots()

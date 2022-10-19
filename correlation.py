@@ -1,4 +1,6 @@
+#pip install pandas openpyxl xlsxwriter xlrd
 import numpy as np
+import pandas as pd
 data = [[ 0.834,  0.000,	-0.603,	-0.021,	 0.526,	 1.160,	1.370,	 0.599,	 0.904,	 0.712],
         [-0.609, -0.297,	-0.565,	-0.403,	 0.208,	 0.972,	0.777,	 0.476,	 0.465,	-0.361],
         [ 0.081, -0.178,	-0.788,	-0.477,	 0.471,	-0.354,	1.410,	 0.006,	 0.315,	 0.658],
@@ -55,12 +57,27 @@ def matrix_maker(typ: str):
                 matrix[i][j] = float('{:.4f}'.format(corr_norm(corr_koef(i, j), dispersion(i), dispersion(j))))
     return matrix
 
+
+
 def matrix_print(matrix: list):
     for row in matrix: print(row)
 
+matrix = matrix_maker("norm corr")
+#matrix_print(matrix_maker("norm corr"))
+#matrix = matrix_maker("corr")
+matrix_print(matrix)
 
-matrix_print(matrix_maker("norm corr"))
-matrix_print(matrix_maker("corr"))
+df = pd.DataFrame({'1': matrix[0],
+                   '2': matrix[1],
+                   '3': matrix[2],
+                   '4': matrix[3],
+                   '5': matrix[4],
+                   '6': matrix[5],
+                   '7': matrix[6],
+                   '8': matrix[7],
+                   '9': matrix[8],
+                   '10': matrix[9]})
+df.to_excel('norm_corr_m.xlsx')
 #print(corr_koef(0, 0))
 #print(dispersion(0))
 #print(corr_norm(corr_koef(0, 0), dispersion(0), dispersion(0)))
