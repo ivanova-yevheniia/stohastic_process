@@ -12,6 +12,8 @@ data = [[ 0.834,  0.000,	-0.603,	-0.021,	 0.526,	 1.160,	1.370,	 0.599,	 0.904,	
         [-0.505, -0.520,	-0.620,	 0.043,	 0.561,	 1.220,	0.700,	 1.020,	 0.201,	-0.136],
         [-0.992, -1.150,	-0.326,	-0.008,	 0.248,	 0.221,	0.708,	 0.675,	-0.112,	 0.927]]
 
+
+################################# Main Funktions #################################
 # Mx
 def expected_value(t: int):
     sum = 0
@@ -28,10 +30,6 @@ def corr_koef(i: int, j: int):
         sum += data[n][i]*data[n][j] - m
     return sum/11
 
-#побудова матриці кореляції
-#def corr_matrix():
-#    for i in ragnge(10)
-
 # Dx
 def dispersion(x: int):
     m = expected_value(x)
@@ -45,9 +43,27 @@ def corr_norm(corr_koef: float, dxi: float, dxj: float):
     return corr_koef/np.sqrt(dxi*dxj)
 
 
-print(corr_koef(0, 0))
-print(dispersion(0))
-print(corr_norm(corr_koef(0, 0), dispersion(0), dispersion(0)))
+################################# Matrix Maker #################################
+
+def matrix_maker(typ: str):
+    matrix = [[0] * 10 for i in range(10)]
+    for i in range(10):
+        for j in range(10):
+            if typ == "corr":
+                matrix[i][j] = float('{:.4f}'.format(corr_koef(i, j)))
+            elif typ == "norm corr":
+                matrix[i][j] = float('{:.4f}'.format(corr_norm(corr_koef(i, j), dispersion(i), dispersion(j))))
+    return matrix
+
+def matrix_print(matrix: list):
+    for row in matrix: print(row)
+
+
+matrix_print(matrix_maker("norm corr"))
+matrix_print(matrix_maker("corr"))
+#print(corr_koef(0, 0))
+#print(dispersion(0))
+#print(corr_norm(corr_koef(0, 0), dispersion(0), dispersion(0)))
 
 #test for t=10
 #print((0.712-0.361+0.658+0.626-0.297+0.559-0.427-0.459+0.317-0.290-0.136+0.927)/12)
